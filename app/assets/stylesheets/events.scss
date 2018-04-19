@@ -1,0 +1,33 @@
+#wrapper{
+	width: 1000px;
+}
+#left{
+	width: 400px;
+	display: inline-block;
+}
+#right{
+	width: 400px;
+	display: inline-block;	
+	vertical-align: top;
+	
+}
+#chatbox{
+	width: 400px;
+	border: solid black;
+	height: 200px;
+	overflow: scroll;
+}
+table{
+	tr:nth-child(even) {background: #FFF}
+tr:nth-child(odd) {background: #EEE}
+th{
+	background: #c1c1c1
+}
+border: solid black
+}
+
+#event_edit{
+	width: 400px;
+	border: solid black;
+	
+}

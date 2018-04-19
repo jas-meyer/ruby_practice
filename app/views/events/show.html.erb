@@ -1,0 +1,55 @@
+<h2><a href ="/events/">Events</a>
+<a href ="/sessions/current_user" data-method="delete">Logout</a></h2> 
+
+
+<h1> <%=@event.name%> </h1>
+<div id = "wrapper">
+	<div id = "left">
+<h2> Host: <%=@event.user.first_name%> <%=@event.user.last_name%>
+</h2>
+<h2> Date: <%=@event.date.strftime("%B %d, %Y")%>
+</h2>
+<h2> Location: <%=@event.city%>, <%=@event.state%>
+</h2>
+<h2> People who are joining the event: <%=@event.attendees.count%>
+</h2>
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Location</th>
+		<th>State</th>
+	</tr>
+	<% if @attends %>
+	<% @attends.each do |attend| %>
+	<tr>
+		<td><%=attend.user.first_name%> <%=attend.user.last_name%>
+		</td>
+		<td><%=attend.user.city%></td>
+		<td><%=attend.user.state%></td>
+	</tr>
+	<% end %>
+	<% end %>
+</table>
+
+</div>
+<div id ="right">
+	<h2>Discussion about this event:</h2>
+	<div id ="chatbox">
+		<% if @comments %>
+	<% @comments.each do |comment| %>
+	<p><%=comment.user.first_name%> says: <%=comment.content %></p>
+	<p> **************** </p>
+	<% end %>
+	<% end %>
+	</div>
+	<h3>Add Comment</h3>
+	<form action = "/comments/<%=@event.id%>/"
+		method ="post">
+		<input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+		<input type="text" name = "event[comment]">
+		<p><input type = "submit" value = "Submit Comments"></p>
+	</form>
+
+
+</div>
+</div>
